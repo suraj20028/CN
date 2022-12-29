@@ -11,9 +11,10 @@ def division(code,pol):
         print(temp)
     if(temp[0] != '0'):
             res=xor(temp,poly,len(poly))
-            print(res[1:])
+            send = res[1:]
     else:
-        print(temp[1:])
+        send = temp[1:]
+    return send
 def xor(a, b, n):
     ans = ""
     for i in range(n):
@@ -23,8 +24,13 @@ def xor(a, b, n):
             ans += "1"
     return ans
 code = input("ENTER CODEWROD \n")
-poly = "1010"
+poly = "1101"
 zeroes = "000"
 modified_code = code+zeroes
-division(modified_code,poly)
-
+sender = division(modified_code,poly)
+receiver = code+sender
+ans = division(receiver,poly)
+if ans == "000":
+    print("no error")
+else:
+    print("error data")
